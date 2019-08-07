@@ -1,0 +1,60 @@
+#include <stdio.h>
+#include <iostream>
+#include <conio.h>
+
+using namespace std;
+
+int calificaciones[4][5],materias[6],alumno=0,materia,nombre=0,MIN=0,MAX=0,califfinal=0,a,b,aprobado=0,reprobado=0,d;
+double estudiante[4],mensual,calificacion[6];
+char pupilo[4][30];
+
+int main(){
+    cout << "Numero de estudiantes a evaluar: ";
+    cin >> alumno;
+    
+    for(a = 0; a<alumno; a++){
+        cout << "Nombre del alumno: " << a+1 << ": ";
+        cin >> pupilo[a];
+    }
+        cout <<"Cuantas materias se cursaron este semestre? ";
+        cin >> materia;
+    
+        for(a = 0; a < alumno; a++){
+            mensual = 0;
+                for(b = 0; b < materia; b++){
+                    cout << "Calificaciones de " << pupilo[a] << " para la materia " << b+1 << ": ";
+                    cin >> calificaciones[a][b];
+                    mensual = mensual + calificaciones[a][b];
+                    califfinal = califfinal + mensual;
+                }
+            calificacion[a] = mensual;
+            estudiante[a] = mensual/materia;
+
+            if(nombre < calificacion[a]){
+                nombre = calificacion[a];
+                MAX = a;
+            }
+            if(nombre > calificacion[a]){
+                nombre = calificacion[a];
+                MIN = a;}
+            if (califfinal >= 7){  
+           cout<<endl;  
+           cout<<"Alumno Aprobado";  
+      }  
+      else  
+      {  
+           cout<<endl;  
+           cout<<"Alumno No aporobado";  
+      }  
+
+        }
+    cout << endl << "El alumno con peor promedio es: " << pupilo[MIN];
+    cout << endl << "El alumno con mejor promedio es: " << pupilo[MAX];
+    cout << endl << "Promedio del grupo: " << endl;
+
+    for(a=0;a<alumno;a++){
+        cout << "   " << pupilo[a] << ": " << estudiante[a] << endl;
+    }
+ getch();
+ return 0;
+}
